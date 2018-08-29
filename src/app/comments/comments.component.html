@@ -1,0 +1,11 @@
+
+<div align="center">
+  <h2> Comments </h2>
+  <div class="card" *ngFor="let c of comments">
+    <div class="container">
+      <h2> <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="width:8%">  <b>Name: </b>{{c.name}}</h2>
+      <p> <b>Email:</b>  {{c.email}}</p>
+      <p> <b> Comments: </b> {{c.body}}</p>
+    </div>
+  </div>
+</div>
