@@ -7,6 +7,9 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule} from './app-routing.module';
 import { CommentsComponent } from './comments/comments.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { DeletePostComponent } from './delete-post/delete-post.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -14,12 +17,14 @@ import { CreatePostComponent } from './create-post/create-post.component';
     AppComponent,
     PostComponent,
     CommentsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    DeletePostComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
