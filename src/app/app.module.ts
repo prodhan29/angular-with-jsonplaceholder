@@ -10,6 +10,11 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { DeletePostComponent } from './delete-post/delete-post.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ItemsListComponent } from './items-list/items-list.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { ItemFormComponent } from './item-form/item-form.component';
+import { AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 
 @NgModule({
@@ -18,12 +23,17 @@ import { environment } from '../environments/environment';
     PostComponent,
     CommentsComponent,
     CreatePostComponent,
-    DeletePostComponent
+    DeletePostComponent,
+    ItemsListComponent,
+    ItemDetailComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],

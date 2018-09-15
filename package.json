@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:prod": "ng build --prod && http-server -p 8081 --baseDir dist/angular-with-jsonplceholder"
   },
   "private": true,
   "dependencies": {
@@ -15,6 +16,7 @@
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
+    "@angular/fire": "^5.0.0",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
     "@angular/platform-browser": "^6.1.0",
@@ -23,6 +25,8 @@
     "@angular/router": "^6.1.0",
     "@angular/service-worker": "^6.1.0",
     "core-js": "^2.5.4",
+    "firebase": "^5.5.0",
+    "http-server": "^0.11.1",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
   },
