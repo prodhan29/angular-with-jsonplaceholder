@@ -10,12 +10,12 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { DeletePostComponent } from './delete-post/delete-post.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { ItemsListComponent } from './items-list/items-list.component';
-import { ItemDetailComponent } from './item-detail/item-detail.component';
-import { ItemFormComponent } from './item-form/item-form.component';
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { PaitentModule} from './paitent/paitent.module';
+import { AuthModule } from './auth/auth.module';
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {AngularFireAuthModule} from "@angular/fire/auth";
 
 
 @NgModule({
@@ -25,17 +25,17 @@ import { PaitentModule} from './paitent/paitent.module';
     CommentsComponent,
     CreatePostComponent,
     DeletePostComponent,
-    ItemsListComponent,
-    ItemDetailComponent,
-    ItemFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     PaitentModule,
+    AuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
