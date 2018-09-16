@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
+import {AngularFireDatabase, AngularFireList, snapshotChanges} from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -16,13 +16,18 @@ export class PaitentService {
   }
 
   getPatient(setPatients) {
-    return this.patientRef.snapshotChanges().pipe(
-        map( changes => changes.map( c => ({ ...c.payload.val(), key: c.payload.key  })))
-    ).subscribe( p => {
+
+      return this.patientRef.snapshotChanges().pipe(
+        map(changes => {
+          if (changes instanceof Array) {
+             return changes.map( c => ({ ...c.payload.val(), key: c.payload.key  }));
+          }
+        })
+      ).subscribe( p => {
         console.log(p);
         this.patientList = p;
         setPatients(p);
-    });
+      });
   }
 
   createPatient(patient: any) {
