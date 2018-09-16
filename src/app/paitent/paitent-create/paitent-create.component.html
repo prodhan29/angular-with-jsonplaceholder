@@ -1,0 +1,10 @@
+<div>
+
+  name <input [(ngModel)]="patient.name" type="text"  name="name" placeholder="Full Name"/>
+  age <input [(ngModel)]="patient.age" type="number" name="age" placeholder="Age"/>
+  address <input [(ngModel)]="patient.address" type="text" name="age" placeholder="Address"/>
+
+  <button (click)="createPatient()" class="btn btn-success" > done </button>
+
+  <p *ngIf="errorMsg !=='' "> {{errorMsg}}</p>
+</div>

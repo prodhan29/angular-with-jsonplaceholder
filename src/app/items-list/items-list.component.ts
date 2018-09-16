@@ -15,7 +15,7 @@ export class ItemsListComponent implements OnInit {
   ngOnInit() {
       // get List of items from firebase
       this.items = this.itemSvc.getItemsList().valueChanges().subscribe( items => console.log(items));
-      this.itemSvc.createItem();
+      // this.itemSvc.createItem();
 
 
   }

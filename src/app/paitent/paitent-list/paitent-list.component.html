@@ -1,0 +1,14 @@
+<div>
+  <a routerLink="/patient/create"> create patient</a>
+  <ul>
+    <li *ngFor="let p of patientList; let i = index">
+      <h3> {{p.name}}</h3>
+      <p>age: {{p.age}}</p>
+      <p>address: {{p.address}}</p>
+      <span>
+        <a routerLink="/patient/{{p.key}}" > <span style="color:dodgerblue"> Edit </span> </a>
+        <span style="color:red; padding-left: 10px " (click)="delete(p)"> Remove</span>
+      </span>
+    </li>
+  </ul>
+</div>

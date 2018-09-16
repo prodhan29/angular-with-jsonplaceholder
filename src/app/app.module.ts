@@ -14,7 +14,8 @@ import { ItemsListComponent } from './items-list/items-list.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 import { AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { PaitentModule} from './paitent/paitent.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    PaitentModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
