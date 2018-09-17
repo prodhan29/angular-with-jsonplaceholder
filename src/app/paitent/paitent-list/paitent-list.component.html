@@ -1,5 +1,7 @@
 <div>
   <a routerLink="/patient/create"> create patient</a>
+
+  <button (click)="signout()"> sign out </button>
   <ul>
     <li *ngFor="let p of patientList; let i = index">
       <h3> {{p.name}}</h3>

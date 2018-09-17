@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PaitentService} from '../../paitent.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-paitent-list',
@@ -20,8 +21,14 @@ export class PaitentListComponent implements OnInit {
     this.patientService.deletePatient(patient.key);
   }
 
-  edit (patient: any) {
-    console.log(patient);
+  signout() {
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
   }
+
+
 
 }
