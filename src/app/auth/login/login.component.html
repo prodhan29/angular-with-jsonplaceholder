@@ -12,7 +12,7 @@
           Facebook
         </a>
 
-        <a href="#" class="btn-google m-b-20">
+        <a (click)="tryGoogleLogin()" class="btn-google m-b-20">
           <img src="assets/icons/icon-google.png" alt="GOOGLE">
           Google
         </a>
@@ -22,8 +22,8 @@
 							Email
 						</span>
         </div>
-        <div class="wrap-input100 validate-input" data-validate = "Username is required">
-          <input class="input100" type="text" name="email" >
+        <div class="wrap-input100 validate-input" >
+          <input class="input100" type="text" name="email" [(ngModel)] = "user.email" >
           <span class="focus-input100"></span>
         </div>
 
@@ -32,13 +32,13 @@
 							Password
 						</span>
         </div>
-        <div class="wrap-input100 validate-input" data-validate = "Password is required">
-          <input class="input100" type="password" name="pass" >
+        <div class="wrap-input100 validate-input" >
+          <input class="input100" type="password" name="pass" [(ngModel)] = "user.password" >
           <span class="focus-input100"></span>
         </div>
 
         <div class="container-login100-form-btn m-t-17">
-          <button class="login100-form-btn">
+          <button class="login100-form-btn" (click)="tryLogin()" >
             Sign In
           </button>
         </div>
@@ -53,6 +53,8 @@
           </a>
         </div>
       </form>
+
+      <p *ngIf="errorMsg !== ''" style="color: red"> {{errorMsg}}</p>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../auth.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,9 @@ export class RegisterComponent implements OnInit {
     email: '',
     password: '',
   };
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,8 +25,8 @@ export class RegisterComponent implements OnInit {
 
     if (this.user.password === this.confirmPassword) {
       this.authService.doRegister(this.user)
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
+        .then(response => this.router.navigate(['/login']))
+        .catch(error => alert(error.message));
 
     } else {
       alert('password do not match');
