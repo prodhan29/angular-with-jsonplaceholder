@@ -1,0 +1,10 @@
+<p>
+
+  upload the file:
+</p>
+
+<input type="file" class="upload" (change)="uploadRohingaUsers($event.target.files)">
+
+<button (click)="rohingaService.createRohinga()" > create  rohinga </button>
+
+<button (click)="rohingaService.updateRohinga()" > update rohinga </button>
