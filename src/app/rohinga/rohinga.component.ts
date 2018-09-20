@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {RohingaService} from "../rohinga.service";
+
 import * as firebase from 'firebase/app';
+import {LocalStorage} from "@ngx-pwa/local-storage";
 
 @Component({
   selector: 'app-rohinga',
@@ -9,7 +11,9 @@ import * as firebase from 'firebase/app';
 })
 export class RohingaComponent implements OnInit {
 
-	constructor(public rohingaService: RohingaService) { }
+	constructor(
+		public rohingaService: RohingaService,
+		public localStorage: LocalStorage) { }
 
 	ngOnInit() {
 	}
@@ -29,8 +33,23 @@ export class RohingaComponent implements OnInit {
 			reader.onload = (e) => {
 				let csv: any = reader.result.split("\n");
 				console.log('csv data ', 'the size: ' + csv.length , csv[1].split(','));
+
+				let testData = [];
+				for(let i=0; i<10; i++) {
+					testData.push(csv);
+				}
+
+				this.localStorage.setItem('rohingya', testData).subscribe(() => {
+					console.log("successfully saved");
+				});
 			}
 		}
+	}
+
+	getFromLocalStorage() {
+		this.localStorage.getItem('rohingya').subscribe((rohinga) => {
+			console.log(rohinga);
+		});
 	}
 
 }

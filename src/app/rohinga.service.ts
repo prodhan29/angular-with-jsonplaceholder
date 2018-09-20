@@ -29,23 +29,23 @@ export class RohingaService {
 
 	}
 
-	createRohinga() {
-		this.rohingaCollection.add({
-			name: 'habib munshi',
-			age: 26,
-			gender: 'male'
-		})
+	createRohinga(rohingya) {
+  		return new Promise((resolve, reject) => {
+			this.rohingaCollection
+				.add(rohingya)
+				.then(resolve)
+				.catch(resolve);
+		});
 	}
 
-	updateRohinga() {
-
-  		console.log('updating');
-		let docId = '2Zl8147VpSqSK9T9e3B9';
-		this.rohingaCollection.doc(docId).set({
-			name: 'yasin Arafat',
-			age: 28,
-			homeAddress: 'jessore'
-		})
+	updateRohinga(docId, rohingya) {
+  		// return new Promise((resolve, reject) => {
+		// 	this.rohingaCollection
+		// 		.doc(docId)
+		// 		.set(rohingya)
+		// 		.then(resolve)
+		// 		.catch(reject);
+		// });
 	}
 
 }

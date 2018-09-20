@@ -14,8 +14,8 @@ import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { PaitentModule} from './paitent/paitent.module';
 import { AuthModule } from './auth/auth.module';
-import {AngularFirestoreModule} from "@angular/fire/firestore";
-import {AngularFireAuthModule} from "@angular/fire/auth";
+import { AngularFirestoreModule} from "@angular/fire/firestore";
+import { AngularFireAuthModule} from "@angular/fire/auth";
 import { RohingaComponent } from './rohinga/rohinga.component';
 
 
