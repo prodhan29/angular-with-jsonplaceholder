@@ -1,51 +1,65 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "@angular/fire/firestore";
+import {Observable, of} from "rxjs/index";
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class RohingaService {
 
-	rohingaCollection: AngularFirestoreCollection<any>;
+    rohingaCollection: AngularFirestoreCollection<any>;
 
-	private rohingaDoc: AngularFirestoreDocument<any>;
+    private rohingaDoc: AngularFirestoreDocument<any>;
 
-  	constructor(firestore: AngularFirestore) {
-		this.rohingaCollection = firestore.collection('rohinga');
-		this.getRohingaList();
-	}
+    constructor(firestore: AngularFirestore) {
+        this.rohingaCollection = firestore.collection('rohinga');
+        this.getRohingaList();
+    }
 
-	getRohingaList() {
-		this.rohingaCollection.snapshotChanges().subscribe((rohingas) => {
-			let data = [];
-			rohingas.forEach((r: any) => {
-				console.log( r.payload.doc.id, r.payload.doc.data());
-			});
-		});
-	}
+    getRohingaList(): Observable<any> {
 
-	getRohinga() {
+        return new Observable((observer) => {
+            this.rohingaCollection.snapshotChanges().subscribe( rohingas => {
 
-	}
+                let data = [];
+                rohingas.forEach((r: any) => {
+                    console.log(r.payload.doc.id, r.payload.doc.data());
+                    data.push({ id: r.payload.doc.id, ...r.payload.doc.data()});
+                });
+                observer.next(data);
+            });
+        });
+    }
 
-	createRohinga(rohingya) {
-  		return new Promise((resolve, reject) => {
-			this.rohingaCollection
-				.add(rohingya)
-				.then(resolve)
-				.catch(resolve);
-		});
-	}
+    getRohinga() {
 
-	updateRohinga(docId, rohingya) {
-  		// return new Promise((resolve, reject) => {
-		// 	this.rohingaCollection
-		// 		.doc(docId)
-		// 		.set(rohingya)
-		// 		.then(resolve)
-		// 		.catch(reject);
-		// });
-	}
+    }
+
+    createRohinga(rohingya) {
+
+        return new Promise((resolve, reject) => {
+            this.rohingaCollection
+                .add(rohingya)
+                .then(resolve)
+                .catch(reject);
+        });
+    }
+
+    deleteRohinga(id) {
+        return new Promise((resolve, reject) => {
+            this.rohingaCollection.doc(id).delete().then( r => console.log('successfully deleted'));
+        });
+    }
+
+    updateRohinga(docId, rohingya) {
+        // return new Promise((resolve, reject) => {
+        // 	this.rohingaCollection
+        // 		.doc(docId)
+        // 		.set(rohingya)
+        // 		.then(resolve)
+        // 		.catch(reject);
+        // });
+    }
 
 }

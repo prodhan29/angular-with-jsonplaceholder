@@ -11,11 +11,32 @@ import {LocalStorage} from "@ngx-pwa/local-storage";
 })
 export class RohingaComponent implements OnInit {
 
+  rohingas: any = [];
+  rohingaName: string;
+
 	constructor(
 		public rohingaService: RohingaService,
 		public localStorage: LocalStorage) { }
 
 	ngOnInit() {
+
+		this.rohingaService.getRohingaList().subscribe( data => this.rohingas = data);
+	}
+
+    createRohinga() {
+
+		let rohinga = {
+            name: this.rohingaName,
+            age: Math.floor( Math.random() * 50)
+        };
+
+		this.rohingaService.createRohinga(rohinga).then((response)=> {
+			console.log(response);
+		}).catch((error) => console.log(error));
+	}
+
+    deleteRohinga(id) {
+        this.rohingaService.deleteRohinga(id);
 	}
 
 

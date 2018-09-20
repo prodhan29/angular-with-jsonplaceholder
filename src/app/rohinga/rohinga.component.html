@@ -5,8 +5,19 @@
 
 <input type="file" class="upload" (change)="uploadRohingaUsers($event.target.files)">
 
-<button (click)="rohingaService.createRohinga()" > create  rohinga </button>
-
 <button (click)="rohingaService.updateRohinga()" > update rohinga </button>
 
 <button (click)="getFromLocalStorage()" > get from local </button>
+
+<br>
+<br>
+<input type="text" name ="name" [(ngModel)]="rohingaName"  placeholder="Enter your name " />
+<button (click)="createRohinga()"> create  rohinga </button>
+
+<ul>
+  <li *ngFor="let r of rohingas">
+      <p> {{r.name.toUpperCase()}} </p>
+      <p> {{r.age}} </p>
+      <p style = "color: red" (click)="deleteRohinga(r.id)" > Remove </p>
+  </li>
+</ul>
