@@ -52,7 +52,7 @@ export class RohingaService {
         });
     }
 
-    updateRohinga(docId, rohingya) {
+    updateRohinga() {
         // return new Promise((resolve, reject) => {
         // 	this.rohingaCollection
         // 		.doc(docId)

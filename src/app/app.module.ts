@@ -18,6 +18,7 @@ import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {AngularFireAuthModule} from "@angular/fire/auth";
 import {RohingaComponent} from './rohinga/rohinga.component';
 import {FormsModule} from "@angular/forms";
+import {AngularFireMessaging} from "@angular/fire/messaging";
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {FormsModule} from "@angular/forms";
         CommentsComponent,
         CreatePostComponent,
         DeletePostComponent,
-        RohingaComponent,
+        RohingaComponent
     ],
     imports: [
         BrowserModule,
@@ -38,7 +39,7 @@ import {FormsModule} from "@angular/forms";
         AuthModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
-        AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+        AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
         AngularFireAuthModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     ],

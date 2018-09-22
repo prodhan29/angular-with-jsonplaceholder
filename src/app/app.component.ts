@@ -1,15 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'angular-with-jsonplceholder';
+    title = 'angular-firebase';
 
-  ngOnInit() {
-// Sub
+    message: any;
 
-  }
+    constructor() {
+
+    }
+
+    ngOnInit() {
+
+    }
 }
